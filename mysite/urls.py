@@ -13,9 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url #dodajemy include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'', include('blog.urls')),  #to zaimportuje adresy URL z aplikacji blog do tego głównego pliku mysite/urls.py.  To importuje blog.urls do głównego adresu (''). Django przekieruje wszystkie reguły z adresu 'http://127.0.0.1:8000/' do blog.urls i tam będzie szukał dalszych wskazówek.
 ]
