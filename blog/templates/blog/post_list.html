@@ -1,27 +1,13 @@
-<!-- foldery templates i blog zostały najpierw dodane -->
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Django blog lud8919</title>
-</head>
-<body>
-        <div>
-            <h1><a href="">Django  Blog</a></h1>
-        </div>
-
-
+{% extends 'blog/base.html' %} <!-- To znaczy, że rozszerzamy szablon base.html w pliku post_list.html -->
+{% block content %}
         {% for post in posts %}
-            <div>
-                <p>published: {{ post.published_date }}</p>
-                <h2><a href="">{{ post.title }}</a></h2>
-                <p>{{ post.text|linebreaksbr }}</p>   <!--  |linebreaksbr  zamienia znaczniki nowej linii na akapity -->
+            <div class="post">
+                <div class="date">
+                <p>published: {{ post.published_date}} </p>
+                </div>
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>  <!--  To generuje adres strony z szablonu django. blog.views.post_detail to ścieżka do widoku post_detail. -->
+                <p>{{ post.text|linebreaksbr }}</p>   <!--  |linebreaksbr  zamienia znaczniki nowej linii na akapity. tu więcej https://docs.djangoproject.com/en/dev/ref/templates/builtins/?from=olddocs#safe -->
             </div>
         {% endfor %}
-
-
-</body>
-</html>
+{% endblock content %}
