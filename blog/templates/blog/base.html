@@ -16,6 +16,9 @@
 </head>
 <body>
     <div class="page-header">
+        {% if user.is_authenticated %} <!-- ten tag  if , sprawi, że link będzie widoczny tylko dla użytkowników zalogowanych jako admin  -->
+        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        {% endif %}
         <h1><a href="/">Django Blog</a></h1>
     </div>
     <div class="content container">

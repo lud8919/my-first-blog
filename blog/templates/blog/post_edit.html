@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+
+
+{% block content %}
+    <h1>New post</h1>
+    <form method="POST" class="post-form">{% csrf_token %}  <!-- {% csrf_token %} sprawia, że formularze są bezpieczne! -->
+        {{ form.as_p }}  <!-- {{ form.as_p }} to polecenie wyświetli formularz. Uwaga - jednak musi ono się znajdować wewnątrz znacznika formularza HTML: <form method="POST">...</form>  -->
+        <button type="submit" class="save btn btn-default">Save</button>  <!-- To przycisk zapisz <button type="submit">Save</button>  -->
+    </form>
+{% endblock %}
+
+
+
+
